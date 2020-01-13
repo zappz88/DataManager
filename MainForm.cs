@@ -25,56 +25,6 @@ namespace MarketplaceManager
 			}
 		}
 
-		private void serverSelectionComboBox_ItemSelected(object sender, EventArgs e)
-		{
-			var comboBox = sender as ComboBox;
-			if (comboBox != null)
-			{
-				switch (comboBox.SelectedItem)
-				{
-					case ServerEnum.DATASERVER:
-						this.databaseSelectionComboBox.Items.Clear();
-						this.databaseSelectionComboBox.Items.Add(DatabaseEnum.CPInv);
-						break;
-				}
-			}
-		}
-
-		private void databaseSelectionComboBox_ItemSelected(object sender, EventArgs e)
-		{
-			var comboBox = sender as ComboBox;
-			if (comboBox != null)
-			{
-				switch (comboBox.SelectedItem)
-				{
-					case DatabaseEnum.CPInv:
-						this.tableSelectionComboBox.Items.Clear();
-						this.tableSelectionComboBox.Items.Add(TableEnum.AmazonXref);
-						this.tableSelectionComboBox.Items.Add(TableEnum.eBayXref);
-						this.tableSelectionComboBox.Items.Add(TableEnum.NewEggXref);
-						this.tableSelectionComboBox.Items.Add(TableEnum.WalmartXref);
-						break;
-				}
-			}
-		}
-
-		private void tableSelectionComboBox_ItemSelected(object sender, EventArgs e)
-		{
-			var comboBox = sender as ComboBox;
-			if (comboBox != null)
-			{
-				this.dataTable = GetTable(this.serverSelectionComboBox.SelectedItem as Enum, this.databaseSelectionComboBox.SelectedItem as Enum, $"SELECT * FROM {this.tableSelectionComboBox.SelectedItem}");
-				this.tableDataGridView.DataSource = this.dataTable;
-
-				this.searchParameterComboBox.Items.Clear();
-				this.searchParameterComboBox.Text = string.Empty;
-				foreach (var dataColumn in this.dataTable.Columns)
-				{
-					this.searchParameterComboBox.Items.Add(dataColumn.ToString());
-				}
-			}
-		}
-
 		private void GetDataGridViewCellCollection(object sender, MouseEventArgs e)
 		{
 			var dataGridView = sender as DataGridView;
