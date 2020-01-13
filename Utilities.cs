@@ -45,53 +45,6 @@ namespace MarketplaceManager
 			return controlList;
 		}
 
-		public static object GetTableModel(Enum tableModelEnum)
-		{
-			object tableModel = null;
-			switch (tableModelEnum)
-			{
-				case TableEnum.AmazonXref:
-					tableModel = new AmazonXref();
-					break;
-				case TableEnum.eBayXref:
-					tableModel = new eBayXref();
-					break;
-				case TableEnum.NewEggXref:
-					tableModel = new NewEggXref();
-					break;
-				case TableEnum.WalmartXref:
-					tableModel = new WalmartXref();
-					break;
-				default:
-					tableModel = null;
-					break;
-			}
-			return tableModel;
-		}
-
-		public static object GetNullTableModel(Enum tableModelEnum)
-		{
-			object tableModel = null;
-			switch (tableModelEnum)
-			{
-				case TableEnum.AmazonXref:
-					tableModel = new NullAmazonXrefModel();
-					break;
-				case TableEnum.eBayXref:
-					tableModel = new NulleBayXrefModel();
-					break;
-				case TableEnum.NewEggXref:
-					tableModel = new NullNewEggXrefModel();
-					break;
-				case TableEnum.WalmartXref:
-					tableModel = new NullWalmartXrefModel();
-					break;
-				default:
-					tableModel = null;
-					break;
-			}
-			return tableModel;
-		}
 
 		public static DbContext GetDbContext(Enum dbContextEnum)
 		{
